@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChairLift" representedClassName="ChairLift" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skiArea" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skiRuns" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="skiAreaOfChair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiArea" inverseName="chairLiftAtResort" inverseEntity="SkiArea" syncable="YES"/>
+        <relationship name="skiRunOffOfChair" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkiRun" inverseName="chairliftAccess" inverseEntity="SkiRun" syncable="YES"/>
+    </entity>
+    <entity name="SkiArea" representedClassName="SkiArea" syncable="YES" codeGenerationType="class">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skiRuns" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="chairLiftAtResort" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChairLift" inverseName="skiAreaOfChair" inverseEntity="ChairLift" syncable="YES"/>
+        <relationship name="skiRun" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SkiRun" inverseName="skiAreaOfRun" inverseEntity="SkiRun" syncable="YES"/>
+    </entity>
+    <entity name="SkiRun" representedClassName="SkiRun" syncable="YES" codeGenerationType="class">
+        <attribute name="difficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skiArea" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chairliftAccess" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChairLift" inverseName="skiRunOffOfChair" inverseEntity="ChairLift" syncable="YES"/>
+        <relationship name="skiAreaOfRun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SkiArea" inverseName="skiRun" inverseEntity="SkiArea" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SkiArea" positionX="-335" positionY="-9" width="128" height="118"/>
+        <element name="SkiRun" positionX="-110" positionY="26" width="128" height="118"/>
+        <element name="ChairLift" positionX="-308" positionY="306" width="128" height="118"/>
+    </elements>
+</model>
